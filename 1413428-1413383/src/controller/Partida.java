@@ -1,12 +1,14 @@
 package controller;
 
 import model.Tabuleiro;
+import view.ChessFrame;
 import model.*;
 
 public class Partida {
 	
 	public static void comecarPartida(Tabuleiro tab) {
 		int i;
+		
 	
 		
 		for (i=0;i<8;i++) {
