@@ -2,6 +2,8 @@ package view;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -14,15 +16,15 @@ public class ChessFrame extends JFrame {
 	
 	
 	public ChessFrame(String s) {
-		super(s);// verificar o construtor da classe abstrata : deve exibir o frame com o titulo passado como parametro
+		super(s);
 		
-		Toolkit tk=Toolkit.getDefaultToolkit();//procedimento descrito na nota de aula cap 10
-		Dimension screenSize=tk.getScreenSize();//idem
+		Toolkit tk=Toolkit.getDefaultToolkit();
+		Dimension screenSize=tk.getScreenSize();
 		
-		int sl=screenSize.width;//idem
-		int sa=screenSize.height;//idem
-		int x=sl/2-LARG_DEFAULT/2;//idem
-		int y=sa/2-ALT_DEFAULT/2;//idem
+		int sl=screenSize.width;
+		int sa=screenSize.height;
+		int x=sl/2-LARG_DEFAULT/2;
+		int y=sa/2-ALT_DEFAULT/2;
 		
 		JPanel p = new ChessPanel(sl/2,sa/2);
 		
@@ -36,6 +38,8 @@ public class ChessFrame extends JFrame {
 		setSize(LARG_DEFAULT,ALT_DEFAULT);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		
 
 	}
 

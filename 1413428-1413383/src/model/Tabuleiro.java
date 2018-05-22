@@ -1,7 +1,9 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.geom.Rectangle2D;
 
 public class Tabuleiro {
 	
@@ -10,6 +12,7 @@ public class Tabuleiro {
 	int posTop;
 	int posEsq;
 	public Casa [][] matriz;
+	int dimCasa = 80;
 
 	public Tabuleiro() {
 		this.matriz = new Casa[8][8];
@@ -23,10 +26,10 @@ public class Tabuleiro {
 		for (int i = 0; i < 8; i++) {  
 			for (int j = 0; j < 8; j++) {
 				
-				int dim = 80; // altura e largura do quadrado
-				int x = posEsq+(j*dim);
-				int y = posTop+(i*dim);
-				Casa c = new Casa(x,y,dim, dim);
+				 // altura e largura do quadrado
+				int x = posEsq+(j*dimCasa);
+				int y = posTop+(i*dimCasa);
+				Casa c = new Casa(x,y,dimCasa, dimCasa);
 				this.matriz[i][j] = c;
 			}
 		}
@@ -54,7 +57,7 @@ public class Tabuleiro {
 			for(int j = 0;j < 8; j++) {
 				Casa c = this.matriz[i][j];
 				
-					if(c != null) {
+					if(!c.vazia) {
 						int pX = c.x;
 						int pY = c.y;
 						int pecaX = c.getPeca().img.getHeight(null);
@@ -67,6 +70,41 @@ public class Tabuleiro {
 			}
 			
 		}
+	}
+	public void alteraCorRectSelecionado(Graphics2D g2d , Casa c) {
+		int i,j;
+		for(i=0;i<8;i++) {
+			for(j=0;j<8;j++) {
+				if (this.matriz[i][j].equals(c)) {
+					if( (i%2)==0 && ((j%2)!=0) ) {
+						g2d.setPaint(Color.GRAY);
+						g2d.fill(c.rect);
+						
+					}
+					else if( (i%2)!=0 && ((j%2)==0)) {
+						g2d.setPaint(Color.GRAY);
+						g2d.fill(c.rect);
+					}
+					else {
+						g2d.setPaint(Color.lightGray);
+						g2d.fill(c.rect);
+					}
+				}
+			}
+		}
+		
+	}
+	public Casa selecionaCasa(int x, int y) {
+		
+		int i,j;
+		for(i=0;i<8;i++) {
+			for(j=0;j<8;j++) {
+				Rectangle2D rect2d = this.matriz[i][j].getRectangulo2D();
+				if(rect2d.contains(x,y))
+						return this.matriz[i][j];
+			}
+		}
+		return this.matriz[0][0];		
 	}
 
 }

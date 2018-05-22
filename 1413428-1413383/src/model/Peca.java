@@ -14,6 +14,7 @@ public abstract class Peca {
 	Image img;
 	int posX;
 	int posY;
+	int movimentos=0;
 
 	
 	public Peca(String tipo, String cor ) {
@@ -21,7 +22,7 @@ public abstract class Peca {
 		this.cor = cor;
 		this.tipo = tipo;
 		char inicialCor = cor.charAt(0);
-		String url = "C:\\Users\\marco\\Downloads\\Pecas\\Pecas\\Pecas_1\\"+inicialCor+"_"+tipo+".gif";
+		String url = "U:\\INF1636\\WS\\1413428-1413383\\src\\images\\"+inicialCor+"_"+tipo+".gif";
 
 		try {
 			this.img = ImageIO.read(new File(url));

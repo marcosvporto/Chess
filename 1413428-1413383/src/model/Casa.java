@@ -12,6 +12,7 @@ public class Casa {
 	String cor;
 	public Rectangle2D rect;
 	Peca p;
+	public boolean vazia = true;
 	
 	public Casa(int x, int y, int largura, int altura ) {
 		this.x = x;
@@ -44,6 +45,7 @@ public class Casa {
 	
 	public void setPeca(Peca p) {
 		this.p = p;
+		this.vazia = false;
 	}
 	
 	public Peca getPeca() {
